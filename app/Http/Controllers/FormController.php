@@ -34,13 +34,21 @@ class FormController extends Controller
 
     }
 
-    public function getExcel(string $job)
+    public function getExcel(int $job)
     {
         $table = DB::table('form')->where('station',$job)->get();
         $title = ['name','grade','college','specialty','qq','number', 'introduce'];
         $all_data[] = $title;
 //        $fileName = iconv('UTF-8','GBK','工作室招新');
-        $fileName = 'baoming';
+        $jobs = [
+            1   =>  'FE',
+            2   =>  'BE',
+            3   =>  'Android',
+            4   =>  'UI',
+            5   =>  'PM',
+            6   =>  'Operator'
+        ];
+        $fileName = $jobs[$job].'  baoming';
 
         foreach ($table as $signal_data){
             $temp = [];
