@@ -22,4 +22,16 @@ class FormService
         DB::table('form')->insert($info);
     }
 
+    public function applyTeam($applyInfo)
+    {
+        $time = Carbon::now();
+        $info = array_merge($applyInfo,[
+            'created_at' =>  $time,
+            'updated_at'    =>  $time
+        ]);
+        DB::table('team')->insert($info);
+    }
+
+
+
 }

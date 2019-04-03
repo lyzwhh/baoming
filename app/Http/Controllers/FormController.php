@@ -66,4 +66,32 @@ class FormController extends Controller
 
         return response()->download(realpath(base_path('public')).$fileName,$fileName);
     }
+
+    public function applyTeam(Request $request)
+    {
+        $this->validate($request,[
+            'team_name'  =>  'required',
+            'leader'  =>  'required',
+            'qq0'  =>  'required',
+            'mobile0'  =>  'required',
+            'college0'  =>  'required',
+            'std_num0'  =>  'required',
+
+//            'member1'  =>  'required',
+//            'qq1'  =>  'required',
+//            'mobile1'  =>  'required',
+//            'college1'  =>  'required',
+//            'std_num1'  =>  'required',
+//            'member2'  =>  'required',
+//            'qq2'  =>  'required',
+//            'mobile2'  =>  'required',
+//            'college2'  =>  'required',
+//            'std_num2'  =>  'required'
+        ]);
+        $applyInfo = $request->all();
+        $this->formService->applyTeam($applyInfo);
+        return response([
+            'code'  =>  0
+        ]);
+    }
 }

@@ -7,3 +7,7 @@
  */
 Route::post('/form/apply', 'FormController@apply');
 Route::get('/form/getexcel/{job}', 'FormController@getExcel');
+
+
+
+Route::post('/form/applyteam', 'FormController@applyTeam');
