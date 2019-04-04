@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\FormService;
-use Excel;
+use Maatwebsite\Excel\Excel;
 use Illuminate\Support\Facades\DB;
 class FormController extends Controller
 {
