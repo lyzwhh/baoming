@@ -21,21 +21,21 @@ class CreateTeamTable extends Migration
 
             $table->string('leader');
             $table->integer('qq0');
-            $table->string('sex0')->default('男');
+            $table->string('sex0')->nullable();
             $table->integer('mobile0');
             $table->string('college0')->nullable();
             $table->integer('std_num0')->nullable();
 
             $table->string('member1')->nullable();
             $table->integer('qq1')->nullable();
-            $table->string('sex1')->default('男');
+            $table->string('sex1')->nullable();
             $table->integer('mobile1')->nullable();
             $table->string('college1')->nullable();
             $table->integer('std_num1')->nullable();
 
             $table->string('member2')->nullable();
             $table->integer('qq2')->nullable();
-            $table->string('sex2')->default('男');
+            $table->string('sex2')->nullable();
             $table->integer('mobile2')->nullable();
             $table->string('college2')->nullable();
             $table->integer('std_num2')->nullable();
