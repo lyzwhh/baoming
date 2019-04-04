@@ -16,7 +16,7 @@ class CreateTeamTable extends Migration
         Schema::create('team', function (Blueprint $table) {
             $table->increments('id');
             $table->string('flag');  //0 是本校现场赛　1 是外校现场赛　2 是网络赛
-            $table->string('school')->default('东秦');
+            $table->string('school_name')->default('东秦');
             $table->string('team_name');
 
             $table->string('leader');
