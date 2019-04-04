@@ -70,12 +70,12 @@ class FormController extends Controller
     public function applyTeam(Request $request)
     {
         $this->validate($request,[
-            'team_name'  =>  'required',
-            'leader'  =>  'required',
-            'qq0'  =>  'required',
-            'mobile0'  =>  'required',
-            'college0'  =>  'required',
-            'std_num0'  =>  'required',
+//            'team_name'  =>  'required',
+//            'leader'  =>  'required',
+//            'qq0'  =>  'required',
+//            'mobile0'  =>  'required',
+//            'college0'  =>  'required',
+//            'std_num0'  =>  'required',
 
 //            'member1'  =>  'required',
 //            'qq1'  =>  'required',
