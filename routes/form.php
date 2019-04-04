@@ -11,3 +11,4 @@ Route::get('/form/getexcel/{job}', 'FormController@getExcel');
 
 
 Route::post('/form/applyteam', 'FormController@applyTeam');
+Route::get('/form/getteamexcel/{flag}', 'FormController@getTeamExcel');

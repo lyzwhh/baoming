@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\FormService;
 use Maatwebsite\Excel\Excel;
+use App\Exports\ExcelExport;
 use Illuminate\Support\Facades\DB;
 class FormController extends Controller
 {
@@ -34,12 +35,9 @@ class FormController extends Controller
 
     }
 
-    public function getExcel(int $job)
+    public function getExcel(int $job,ExcelExport $excelExport)
     {
-        $table = DB::table('form')->where('station',$job)->get();
         $title = ['name','grade','college','specialty','qq','number', 'introduce'];
-        $all_data[] = $title;
-//        $fileName = iconv('UTF-8','GBK','工作室招新');
         $jobs = [
             1   =>  'FE',
             2   =>  'BE',
@@ -48,23 +46,9 @@ class FormController extends Controller
             5   =>  'PM',
             6   =>  'Operator'
         ];
-        $fileName = $jobs[$job].'  baoming';
-
-        foreach ($table as $signal_data){
-            $temp = [];
-            foreach ($title as $key){
-                $temp[] = $signal_data->$key;
-            }
-            $all_data[] = $temp;
-        }
-
-        Excel::create($fileName,function($excel) use ($all_data){
-            $excel->sheet('Sheet 1',function($sheet) use($all_data){
-                $sheet->rows($all_data);
-            });
-        })->export('xls');
-
-        return response()->download(realpath(base_path('public')).$fileName,$fileName);
+        $fileName = $jobs[$job].'  baoming.xlsx';
+        $excelExport->buildFormData($title,$job);
+        return $excelExport->download($fileName);
     }
 
     public function applyTeam(Request $request)
@@ -93,5 +77,19 @@ class FormController extends Controller
         return response([
             'code'  =>  0
         ]);
+    }
+    public function getTeamExcel(int $flag,ExcelExport $excelExport)
+    {
+        $title = ['flag','school_name','team_name','leader','qq0','sex0', 'mobile0','college0','std_num0'
+                                                ,'member1','qq1','sex1','mobile1','college1','std_num1'
+                                                ,'member2','qq2','sex2','mobile2','college2','std_num2'];
+        $flags = [
+            0   =>  'NEUQ-Live',
+            1   =>  'Other-Live',
+            2   =>  'Net'
+        ];
+        $fileName = $flags[$flag].'  turing.xlsx';
+        $excelExport->buildTeamData($title,$flag);
+        return $excelExport->download($fileName);
     }
 }
