@@ -92,4 +92,9 @@ class FormController extends Controller
         $excelExport->buildTeamData($title,$flag);
         return $excelExport->download($fileName);
     }
+
+    public function t(Request $request)
+    {
+        dd($request);
+    }
 }
