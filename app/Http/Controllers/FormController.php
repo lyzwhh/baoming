@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\RedisService;
 use Illuminate\Http\Request;
 use App\Services\FormService;
 use Maatwebsite\Excel\Excel;
@@ -95,6 +96,13 @@ class FormController extends Controller
 
     public function t(Request $request)
     {
-        dd($request);
+        RedisService::setex($request['key'],json_encode($request['val']));
+
+    }
+
+    public function getT($id)
+    {
+        $data = RedisService::get($id);
+        dd(json_decode($data,1));
     }
 }

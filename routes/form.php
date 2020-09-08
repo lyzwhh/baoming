@@ -15,3 +15,4 @@ Route::get('/form/getteamexcel/{flag}', 'FormController@getTeamExcel');
 
 
 Route::post('/t', 'FormController@t');
+Route::get('/t/{id}', 'FormController@getT');
