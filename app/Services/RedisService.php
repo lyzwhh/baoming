@@ -6,7 +6,7 @@
  * Time: 9:03
  */
 
-namespace App\Service;
+namespace App\Services;
 
 
 use Illuminate\Support\Facades\Redis;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\RedisService;
+use App\Services\RedisService;
 use Illuminate\Http\Request;
 use App\Services\FormService;
 use Maatwebsite\Excel\Excel;
